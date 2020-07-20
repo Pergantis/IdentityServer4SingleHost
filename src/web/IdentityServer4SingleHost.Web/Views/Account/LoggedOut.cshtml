@@ -1,0 +1,19 @@
+﻿@model IdentityServer4SingleHost.Web.Models.AccountViewModels.LoggedOutViewModel
+
+
+@if (Model.SignOutIframeUrl != null)
+{
+    <iframe style="display: none" width="0" height="0" class="signout" src="@Model.SignOutIframeUrl"></iframe>
+}
+
+@if (Model.PostLogoutRedirectUri != null)
+{
+    <meta http-equiv="refresh" content="0;url=@Model.PostLogoutRedirectUri" data-url="@Model.PostLogoutRedirectUri">
+    <script src="~/js/signin-redirect.js"></script>
+}
+else
+{
+    <meta http-equiv="refresh" content="0;url=/" data-url="/">
+    <script src="~/js/signin-redirect.js"></script>
+}
+

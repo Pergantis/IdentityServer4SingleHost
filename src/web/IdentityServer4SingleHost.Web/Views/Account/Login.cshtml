@@ -1,0 +1,108 @@
+﻿@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@model IdentityServer4SingleHost.Web.Models.AccountViewModels.LoginViewModel
+
+
+@{
+	ViewData["Title"] = "Log in";
+	Layout = "MasterPages/_AccountLayout";
+}
+
+<form class="form" id="login-form" asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+	<input type="hidden" asp-for="ReturnUrl" />
+	<div class="input-block">
+		<input asp-for="Email" type="text" class="input input-with-icon" id="input-username" placeholder="Email" />
+		<span class="input-icon">
+			<svg version="1.1" class="svg-icon" id="svg-user" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+			<path d="M256,0C114.844,0,0,114.844,0,256s114.844,256,256,256s256-114.844,256-256S397.156,0,256,0z M256,74.667
+					c67.635,0,122.667,55.031,122.667,122.667S323.635,320,256,320s-122.667-55.031-122.667-122.667S188.365,74.667,256,74.667z
+					 M256,469.333c-69.707,0-131.52-33.755-170.473-85.615c42.676-20.534,103.621-42.385,170.473-42.385
+					c66.857,0,127.807,21.854,170.474,42.383C387.521,435.577,325.708,469.333,256,469.333z" />
+
+			</svg>
+		</span>
+		<span asp-validation-for="Email" class="text-danger"></span>
+	</div>
+
+	<div class="input-block">
+		<input asp-for="Password" type="password" class="input input-with-icon" id="input-password" name="password" placeholder="Password" />
+		<span class="input-icon">
+			<svg version="1.1" class="svg-icon" id="svg-key" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 469.333 469.333" style="enable-background:new 0 0 469.333 469.333;" xml:space="preserve">
+			<path d="M248.533,192c-17.6-49.707-64.853-85.333-120.533-85.333c-70.72,0-128,57.28-128,128s57.28,128,128,128
+					c55.68,0,102.933-35.627,120.533-85.333h92.8v85.333h85.333v-85.333h42.667V192H248.533z M128,277.333
+					c-23.573,0-42.667-19.093-42.667-42.667S104.427,192,128,192c23.573,0,42.667,19.093,42.667,42.667S151.573,277.333,128,277.333z" />
+
+			</svg>
+		</span>
+		<span asp-validation-for="Password" class="text-danger"></span>
+	</div>
+
+	<div class="input-block t-right">
+		<a asp-action="ForgotPassword">Forgot my password</a>
+	</div>
+
+	<div class="input-block">
+		<label for="remember-me"><input type="checkbox" id="remember-me" name="remember" />Remember me</label>
+	</div>
+
+	<div class="input-block button-block">
+		<input class="input input-with-icon button" type="submit" value="Sign In" />
+        <span class="input-icon">
+			<svg version="1.1" class="svg-icon" id="svg-lock" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+			<path d="M437.333,192h-32v-42.667C405.333,66.99,338.344,0,256,0S106.667,66.99,106.667,149.333V192h-32
+							C68.771,192,64,196.771,64,202.667v266.667C64,492.865,83.135,512,106.667,512h298.667C428.865,512,448,492.865,448,469.333
+							V202.667C448,196.771,443.229,192,437.333,192z M287.938,414.823c0.333,3.01-0.635,6.031-2.656,8.292
+							c-2.021,2.26-4.917,3.552-7.948,3.552h-42.667c-3.031,0-5.927-1.292-7.948-3.552c-2.021-2.26-2.99-5.281-2.656-8.292l6.729-60.51
+							c-10.927-7.948-17.458-20.521-17.458-34.313c0-23.531,19.135-42.667,42.667-42.667s42.667,19.135,42.667,42.667
+							c0,13.792-6.531,26.365-17.458,34.313L287.938,414.823z M341.333,192H170.667v-42.667C170.667,102.281,208.948,64,256,64
+							s85.333,38.281,85.333,85.333V192z" />
+
+
+
+
+
+
+
+				</svg>
+		</span>
+	</div>
+
+	<div class="input-block">
+		You don't have an account?: <a asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a>
+	</div>
+
+	<div class="form-title"><span>Or Connect with</span></div>
+
+	<div class="input-block button-block button-block-blue">
+        <a class="input input-with-icon button"
+		   asp-controller="External"
+		   asp-action="Challenge"
+		   asp-route-provider="Facebook"
+		   asp-route-returnUrl="@Model.ReturnUrl">
+			Facebook
+		</a>
+		<span class="input-icon">
+			<svg class="svg-icon" id="svg-facebook" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+				<path d="m437 0h-362c-41.351562 0-75 33.648438-75 75v362c0 41.351562 33.648438 75 75 75h151v-181h-60v-90h60v-61c0-49.628906 40.371094-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.351562 0 75-33.648438 75-75v-362c0-41.351562-33.648438-75-75-75zm0 0" />
+			</svg>
+		</span>
+	</div>
+	<div class="input-block button-block button-block-red">
+        <a class="input input-with-icon button"
+		   asp-controller="External"
+		   asp-action="Challenge"
+		   asp-route-provider="Google"
+		   asp-route-returnUrl="@Model.ReturnUrl">
+			Google
+		</a>
+		<span class="input-icon">
+			<svg class="svg-icon" id="svg-google" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+				<path d="m147.682 173.862c24.86-32.704 64.162-53.862 108.318-53.862 36.326 0 70.479 14.146 96.167 39.833l10.606 10.606 84.853-84.852-10.606-10.606c-48.352-48.352-112.639-74.981-181.02-74.981-68.38 0-132.667 26.629-181.02 74.98-4.389 4.39-8.594 8.914-12.622 13.557z" />
+				<path d="m423.462 449.642c4.643-4.028 9.168-8.233 13.558-12.622 48.351-48.353 74.98-112.64 74.98-181.02 0-15.575-1.41-31.179-4.192-46.377l-2.251-12.299h-264.557v120h136.452c-9.437 18.773-22.936 34.779-39.199 47.109z" />
+				<path d="m311.602 380.208c-17.091 7.623-35.947 11.792-55.602 11.792-44.156 0-83.458-21.158-108.318-53.862l-85.324 85.324c4.028 4.643 8.233 9.168 12.622 13.557 48.353 48.352 112.64 74.981 181.02 74.981 51.916 0 101.464-15.363 143.479-43.915z" />
+				<path d="m131.863 311.531c-7.619-16.965-11.863-35.761-11.863-55.531s4.244-38.566 11.863-55.531l-87.948-87.948c-28.552 42.015-43.915 91.563-43.915 143.479s15.363 101.464 43.915 143.479z" />
+			</svg>
+		</span>
+	</div>
+
+</form>

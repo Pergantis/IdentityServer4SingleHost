@@ -1,0 +1,30 @@
+﻿@using IdentityServer4SingleHost.Web.Models.EmailViewModels
+@model IdentityServer4SingleHost.Web.Models.EmailViewModels.EmailRedirectViewModel
+@{
+    Layout = "~/Views/Shared/Emails/_EmailLayout.cshtml";
+}
+
+@{
+    ViewData["EmailTitle"] = "Confirm email";
+}
+
+
+
+    <p>
+        Confirm your email to IdentityServer4SingleHost Mobile App.
+    </p>
+
+<br />
+
+<p>
+    Follow the link.
+</p>
+
+@await Html.PartialAsync("Emails/_EmailButton", new EmailButtonViewModel(){Text = "Συνδέσμος Επιβεβαίωσης", Url = Model.RedirectUrl})
+
+<br />
+
+<p>
+    IdentityServer4SingleHost Mobile App
+</p>
+

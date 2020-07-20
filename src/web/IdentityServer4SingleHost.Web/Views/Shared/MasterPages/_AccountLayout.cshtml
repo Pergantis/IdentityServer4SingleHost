@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "_LoginLayout";
+}
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <meta charset="utf-8"/>
+    <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="Welcome to the login form of Identity Server 4 Single Host"/>
+    <link type="text/css" asp-href-include="~/css/login_form.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="form-logo">
+    <img src="~/images/identity-server-4-logo.png" alt="Identity Server 4 Single Host"/>
+</div>
+<div class="login-form-block">
+    @RenderBody()
+</div>
+@await Html.PartialAsync("../Shared/Sections/_JavaScriptBottom")
+@RenderSection("PageJavaScript", false)
+</body>
+</html>

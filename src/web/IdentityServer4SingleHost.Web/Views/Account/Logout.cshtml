@@ -1,0 +1,21 @@
+﻿@model IdentityServer4SingleHost.Web.Models.AccountViewModels.LogoutViewModel
+@{
+    ViewData["Title"] = "Log out";
+    Layout = "MasterPages/_AccountLayout";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <p>Do you want to log out?</p>
+            <form asp-action="Logout">
+                <input type="hidden" name="logoutId" value="@Model.LogoutId"  />
+                <fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Ναι</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

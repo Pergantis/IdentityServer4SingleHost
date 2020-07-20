@@ -1,0 +1,11 @@
+﻿<link href="~/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="~/lib/bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+
+
+<environment include="Development">
+    <link href="~/css/site.css" rel="stylesheet">
+</environment>
+<environment exclude="Development">
+    @* Add here links to your minimized versions *@
+    <link href="~/css/site.css" rel="stylesheet">
+</environment>

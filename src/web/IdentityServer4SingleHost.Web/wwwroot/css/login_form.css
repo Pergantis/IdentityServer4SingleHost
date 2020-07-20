@@ -1,0 +1,34 @@
+*{box-sizing:border-box;}
+body{margin:0;padding:0;background:#2e2e2e;}
+.t-right{text-align:right;}
+
+.login-form-block{display:block;width:400px;max-width:100%;margin:0 auto;padding:40px;background:#fff;border-radius:0px;}
+.form-logo{display:block;text-align:center;margin:20px auto;}
+.form-logo img{display:inline-block;max-width:100%;}
+.form{font-size:14px;font-family:Arial,sans-serif;color:#555555;}
+.form a{color:#4786ff;text-decoration:none;}
+.form a:hover{color:#3b3b3b;}
+.form label{cursor:pointer;}
+::placeholder{color:#c5c5c5;}
+.form .input-block{display:block;position:relative;margin-bottom:12px;}
+.form .input{display:inline-block;position:relative;border:1px solid #d1d1d1;width:100%;height:32px;padding:0 15px;background:#fff;border-radius:5px;}
+.form .input.input-with-icon{padding-left:40px;}
+.form .input-icon{display:inline-block;position:absolute;top:0;left:0;width:32px;height:32px;padding:7px;border:1px solid transparent;background:rgba(0,0,0,0.05);border-radius:5px 0 0 5px;}
+.form .svg-icon{display:inline-block;width:16px;height:16px;fill:#969696;}
+.form .button-block .input-icon{background:rgba(0,0,0,0.2);}
+.form .input.button{cursor:pointer;background:#4786ff;border:1px solid #0d76ff;color:#fff;line-height:30px;text-align:center}
+.form .input.button:hover{background:#0d76ff;border:1px solid #0d76ff;}
+.form .button-block .svg-icon{fill:#fff;}
+.form-title{display:block;width:100%;height:10px;margin:40px 0 20px 0;text-align:center;border-top:1px solid #eaeaea;}
+.form-title span{display:inline-block;height:20px;position:relative;top:-9px;padding:0 10px;background:#fff;line-height:1;vertical-align:bottom;color:#b1b1b1;}
+.form-title.form-title-top{margin-top:0;}
+
+.form .button-block-blue .input.button{background:#3a5998;border:1px solid #243b68;}
+.form .button-block-blue .input.button:hover{background:#243b68;border:1px solid #172642;}
+.form .button-block-red .input.button{background:#f44235;border:1px solid #c52d23;}
+.form .button-block-red .input.button:hover{background:#c52d23;border:1px solid #9a231b;}
+
+
+@media (min-width: 768px) {
+	.login-form-block{padding:60px;border-radius:20px;}
+}
