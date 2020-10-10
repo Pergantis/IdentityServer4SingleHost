@@ -337,7 +337,7 @@ ASALocalRun/
 .localhistory/
 
 # BeatPulse healthcheck temp database
-healthchecksdb
-/.vscode/tasks.json
-/.vscode/launch.json
+
 /src/web/IdentityServer4SingleHost.Web/appsetting.json
+healthchecksdb
+/.vscode
