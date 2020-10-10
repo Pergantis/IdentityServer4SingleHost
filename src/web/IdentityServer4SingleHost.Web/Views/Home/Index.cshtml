@@ -1,28 +1,47 @@
 ﻿@model IdentityServer4SingleHost.Web.Models.AccountViewModels.LoginViewModel
 @{
-    ViewBag.Title = "Admin login | IdentityServer4SingleHost";
+    ViewBag.Title = "User login | IdentityServer4SingleHost";
     Layout = "MasterPages/_AccountLayout";
 }
 
 
 @using Microsoft.AspNetCore.Authentication
 
-<h2>Claims</h2>
 
-<dl>
-    @foreach (var claim in User.Claims)
-    {
-        <dt>@claim.Type</dt>
-        <dd>@claim.Value</dd>
-    }
-</dl>
+<div class="container">
+    <div class="row">
+        <h2>Logged-in User Claims</h2>
+        @foreach (var claim in User.Claims)
+        {
+            <div class="row" style="margin: 10px">
+                <div class="col-sm-6" style="font-style: italic; font-weight: bold">
+                    @claim.Type :
+                </div>
+                <div class="col-sm-6">
+                    @claim.Value
+                </div>
+            </div>
 
-<h2>Properties</h2>
+        }
+    </div>
 
-<dl>
-    @foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)
-    {
-        <dt>@prop.Key</dt>
-        <dd>@prop.Value</dd>
-    }
-</dl>
+    <div class="row">
+        <h2>Properties</h2>
+        @foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)
+        {
+            <div class="row" style="margin: 10px">
+                <div class="col-sm-6" style="font-style: italic; font-weight: bold">
+                    @prop.Key :
+                </div>
+                <div class="col-sm-6">
+                    @prop.Value
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+

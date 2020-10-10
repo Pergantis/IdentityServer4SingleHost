@@ -1,29 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>7858a818-9f3a-44d5-b7ad-1253d20c0be1</UserSecretsId>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Remove="wwwroot\lib\jquery\jquery.validate.messages.el.js" />
     <Content Remove="wwwroot\lib\jquery\jquery.validate.messages.el.min.js" />
   </ItemGroup>
-
   <ItemGroup>
     <None Remove="IdentityAndAccess\Certificate\idsrv3test.pfx" />
     <None Remove="kestrel.pfx" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="kestrel.pfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include="IdentityAndAccess\Certificate\idsrv3test.pfx" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="3.0.2" />
@@ -44,12 +40,10 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\IdentityServer4SingleHost.Domain\IdentityServer4SingleHost.Domain.csproj" />
     <ProjectReference Include="..\IdentityServer4SingleHost.Infrastructure\IdentityServer4SingleHost.Infrastructure.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\js\site.min.js" />
@@ -73,5 +67,4 @@
     <None Include="wwwroot\lib\jquery\jquery.validation.unobtrusive.js" />
     <None Include="wwwroot\lib\jquery\jquery.validation.unobtrusive.min.js" />
   </ItemGroup>
-
 </Project>

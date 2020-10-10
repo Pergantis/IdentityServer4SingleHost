@@ -5,18 +5,18 @@ namespace IdentityServer4SingleHost.Web.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize(Policy = "IsAuthenticatedAdministrator")]
+        [Authorize]
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
-        [Route("tempdata")]
+        [Route("temp_data")]
         [Authorize(AuthenticationSchemes = "Bearer", Policy = "CanAccessPublicApiData")]
         public IActionResult GetTempData()
         {
-            return Ok("Hello admin user");
+            return Ok("Hello User");
         }
     }
 }

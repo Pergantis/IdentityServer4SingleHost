@@ -6,6 +6,7 @@ namespace IdentityServer4SingleHost.Web.Controllers
     [Authorize]
     public class AdminController : Controller
     {
+        [Authorize(Policy = "IsAuthenticatedAdministrator")]
         public IActionResult Index()
         {
             return View();

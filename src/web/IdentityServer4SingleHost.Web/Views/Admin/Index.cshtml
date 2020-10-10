@@ -1,10 +1,40 @@
-﻿
+﻿@using Microsoft.AspNetCore.Authentication
 
 @{
-    Layout = null;
+    ViewBag.Title = "Admin login | IdentityServer4SingleHost";
+    Layout = "MasterPages/_AccountLayout";
 }
 
+<div class="container">
+    <div class="row">
+        <h2>Administrator Claims</h2>
+        @foreach (var claim in User.Claims)
+        {
+            <div class="row" style="margin: 10px">
+                <div class="col-sm-6" style="font-style: italic; font-weight: bold">
+                    @claim.Type :
+                </div>
+                <div class="col-sm-6">
+                    @claim.Value
+                </div>
+            </div>
 
-<div>
-    <h1>Hi i am the admin</h1>  
+        }
+    </div>
+
+    <div class="row">
+        <h2>Properties</h2>
+        @foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)
+        {
+            <div class="row" style="margin: 10px">
+                <div class="col-sm-6" style="font-style: italic; font-weight: bold">
+                    @prop.Key :
+                </div>
+                <div class="col-sm-6">
+                    @prop.Value
+                </div>
+            </div>
+        }
+    </div>
 </div>
+
