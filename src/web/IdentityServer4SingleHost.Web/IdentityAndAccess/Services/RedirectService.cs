@@ -47,7 +47,7 @@ namespace IdentityServer4SingleHost.Web.IdentityAndAccess.Services
 
             if (context != null)
             {
-                (await _clientStore.FindClientByIdAsync(context.ClientId))
+                (await _clientStore.FindClientByIdAsync(context.Client.ClientId))
                     .Properties.TryGetValue("open_email_app", out string openEmailAppUri);
 
                 return openEmailAppUri;

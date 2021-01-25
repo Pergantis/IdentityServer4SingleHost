@@ -70,7 +70,6 @@ namespace IdentityServer4SingleHost.Web
             app.UseStaticFiles();
             app.UseRouting();
             app.UseIdentityServer();
-            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -132,7 +131,7 @@ namespace IdentityServer4SingleHost.Web
                     sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30),
                         errorNumbersToAdd: null);
                 });
-                options.EnableSensitiveDataLogging(true); // Logging sensitive data στο console ids κλπ.
+                options.EnableSensitiveDataLogging(true); // Logging sensitive data οΏ½οΏ½οΏ½ console ids οΏ½οΏ½οΏ½.
             });
 
             services.AddIdentity<ApplicationUser, IdentityRole>(config =>

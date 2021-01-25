@@ -67,9 +67,9 @@ namespace IdentityServer4SingleHost.Web.IdentityAndAccess.Login
             var allowLocal = true;
 
             // Is the request from a authenticated client πχ like our mobile client
-            if (context?.ClientId != null)
+            if (context?.Client.ClientId != null)
             {
-                var client = await _clientStore.FindEnabledClientByIdAsync(context.ClientId);
+                var client = await _clientStore.FindEnabledClientByIdAsync(context.Client.ClientId);
                 if (client != null)
                 {
                     allowLocal = client.EnableLocalLogin;

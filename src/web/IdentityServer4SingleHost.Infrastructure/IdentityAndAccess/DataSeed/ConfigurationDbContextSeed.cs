@@ -11,12 +11,23 @@ namespace IdentityServer4SingleHost.Infrastructure.IdentityAndAccess.DataSeed
 
         public static async Task SeedAsync(ConfigurationDbContext context)
         {
+            if (!context.ApiScopes.Any())
+            {
+                foreach(var scope in Config.GetScopes)
+                {
+                    await context.ApiScopes.AddAsync(scope.ToEntity());
+                }
+
+                await context.SaveChangesAsync();
+            }
+            
             if (!context.Clients.Any())
             {
                 foreach (var client in Config.GetClients)
                 {
                     await context.Clients.AddAsync(client.ToEntity());
                 }
+                
                 await context.SaveChangesAsync();
             }
 
@@ -26,9 +37,10 @@ namespace IdentityServer4SingleHost.Infrastructure.IdentityAndAccess.DataSeed
                 {
                     await context.IdentityResources.AddAsync(resource.ToEntity());
                 }
+                
                 await context.SaveChangesAsync();
             }
-
+            
             if (!context.ApiResources.Any())
             {
                 foreach (var api in Config.GetApis)

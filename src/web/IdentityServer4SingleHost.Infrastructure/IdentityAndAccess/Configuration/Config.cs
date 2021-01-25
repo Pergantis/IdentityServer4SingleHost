@@ -5,8 +5,23 @@ namespace IdentityServer4SingleHost.Infrastructure.IdentityAndAccess.Configurati
 {
     public static class Config
     {
-        public static IEnumerable<ApiResource> GetApis =>
+        public static IEnumerable<ApiScope> GetScopes => 
+            new List<ApiScope>
+            {
+                new ApiScope
+                {
+                    Name = "api.mobile.user",
+                    DisplayName = "Public data scope ."
+                },
+                new ApiScope
+                {
+                    Name = "api.admin.user",
+                    DisplayName = "Admin data scope",
+                    UserClaims = {"can.access.statistics", "can.access.revenues"}
+                }
+            };
 
+        public static IEnumerable<ApiResource> GetApis =>
             new List<ApiResource>
             {
                 new ApiResource("api")
@@ -15,21 +30,7 @@ namespace IdentityServer4SingleHost.Infrastructure.IdentityAndAccess.Configurati
                     {
                         new Secret("@p!Sup3RS3cr3T".Sha256())
                     },
-                    Scopes =
-                    {
-
-                        new Scope
-                        {
-                            Name = "api.mobile.user",
-                            DisplayName = "Public data scope .",
-                        },
-                        new Scope()
-                        {
-                            Name = "api.admin.user",
-                            DisplayName = "Admin data scope",
-                            UserClaims = {"can.access.statistics", "can.access.revenues" }
-                        }
-                    },
+                    Scopes = {"api.mobile.user", "api.admin.user"}
                 }
             };
 

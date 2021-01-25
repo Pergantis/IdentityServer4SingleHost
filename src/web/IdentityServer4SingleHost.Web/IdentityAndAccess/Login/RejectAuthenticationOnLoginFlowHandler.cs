@@ -35,10 +35,12 @@ namespace IdentityServer4SingleHost.Web.IdentityAndAccess.Login
             {
                 // If the user clicks the cancel button, we return the consent denied response, even if the client doesn't negotiate a consent
                 // This move sends an OIDC error access denied to the client app
-                await _interaction.GrantConsentAsync(context, ConsentResponse.Denied);
+                var accessDeniedConsent = new ConsentResponse(){Error = AuthorizationError.AccessDenied};
+                
+                await _interaction.GrantConsentAsync(context, accessDeniedConsent);
 
                 // We can trust the return url because the GetAuthorizationContextAsync returned not null value
-                if (await _clientStore.IsPkceClientAsync(context.ClientId))
+                if (await _clientStore.IsPkceClientAsync(context.Client.ClientId))
                 {
                     // If the client uses PKCE then it is native and we return with javascript for better UX
                     var redirectUrlUsingJS = _generator

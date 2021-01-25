@@ -120,7 +120,7 @@ namespace IdentityServer4SingleHost.Web.Controllers
             if (context != null)
             {
                 //If client uses a PKCE
-                if (await _clientStore.IsPkceClientAsync(context.ClientId))
+                if (await _clientStore.IsPkceClientAsync(context.Client.ClientId))
                 {
                     // Then he is native and we change the flow in a single page for better UX
                     return this.LoadingPage("Redirect", returnUrl);
