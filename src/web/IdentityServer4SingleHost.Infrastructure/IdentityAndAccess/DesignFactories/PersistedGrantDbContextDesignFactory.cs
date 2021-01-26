@@ -12,7 +12,7 @@ namespace IdentityServer4SingleHost.Infrastructure.IdentityAndAccess.DesignFacto
     {
         private readonly IConfiguration _configuration;
 
-        public PersistedGrantDbContextDesignFactory(IConfiguration configuration)
+        public PersistedGrantDbContextDesignFactory()
         {
             _configuration = IdentityServerConfigurationBuilder.GetConfiguration();
         }
